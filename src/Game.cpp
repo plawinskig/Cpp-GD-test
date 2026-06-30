@@ -112,10 +112,12 @@ void Game::drawFruit()
 
 Vector2 Game::getSnakeDirectionFromInput()
 {
-    if (IsKeyDown(KEY_W)) { return {0, -1}; }
-    if (IsKeyDown(KEY_S)) { return {0, 1}; }
-    if (IsKeyDown(KEY_A)) { return {-1, 0}; }
-    if (IsKeyDown(KEY_D)) { return {1, 0}; }
+    Vector2 new_direction;
+    if (IsKeyDown(KEY_W)) { new_direction = {0, -1}; }
+    if (IsKeyDown(KEY_S)) { new_direction = {0, 1}; }
+    if (IsKeyDown(KEY_A)) { new_direction = {-1, 0}; }
+    if (IsKeyDown(KEY_D)) { new_direction = {1, 0}; }
+    return new_direction;
 }
 
 void Game::wrapSnake()
