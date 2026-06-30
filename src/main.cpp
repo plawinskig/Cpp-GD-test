@@ -1,17 +1,17 @@
 #include "raylib.h"
 
-const int cell_size = 100;
-const int cell_count_x = 10;
-const int cell_count_y = 9;
+const int CELL_SIZE = 100;
+const int CELL_COUNT_X = 10;
+const int CELL_COUNT_Y = 9;
 
 void drawCell(int pos_x, int pos_y, Color col)
 {
-    DrawRectangle(pos_x * cell_size, pos_y * cell_size, cell_size, cell_size, col);
+    DrawRectangle(pos_x * CELL_SIZE, pos_y * CELL_SIZE, CELL_SIZE, CELL_SIZE, col);
 }
 
 int main() 
 {
-    InitWindow(cell_size * cell_count_x, cell_size * cell_count_y, "Game of snake");
+    InitWindow(CELL_SIZE * CELL_COUNT_X, CELL_SIZE * CELL_COUNT_Y, "Game of snake");
     
     SetTargetFPS(60);
 
