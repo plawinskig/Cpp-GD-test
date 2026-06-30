@@ -53,11 +53,13 @@ int main()
     const float move_time_duration_seconds = 0.2;
     float timer = move_time_duration_seconds;
 
-    setFruit();
+    snake.push_back({5,5});
+    snake.push_back({5,4});
+    snake.push_back({5,3});
+    snake.push_back({5,2});
+    snake.push_back({5,1});
 
-    snake.push_back(Vector2());
-    Vector2 &head_pos = snake[0];
-    head_pos = {5, 5};
+    setFruit();
 
     while (!WindowShouldClose()) 
     {
@@ -77,7 +79,7 @@ int main()
         }
         
         // snake
-        drawCell(head_pos.x, head_pos.y, DARKGREEN);
+        drawCell(snake[0].x, snake[0].y, DARKGREEN);
 
         for (auto it = snake.begin() + 1; it != snake.end(); ++it)
         {
@@ -100,8 +102,8 @@ int main()
                 snake[i] = snake[i - 1];
             }
 
-            head_pos.x += snake_direction.x;
-            head_pos.y += snake_direction.y;
+            snake[0].x += snake_direction.x;
+            snake[0].y += snake_direction.y;
         }
 
         // wrapper
