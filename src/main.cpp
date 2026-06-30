@@ -116,15 +116,27 @@ int main()
 
             snake[0].x += snake_direction.x;
             snake[0].y += snake_direction.y;
-        }
 
-        // wrapper
-        for (auto &segment : snake)
-        {
-            if (segment.x >= CELL_COUNT_X) { segment.x = 0; }
-            if (segment.y >= CELL_COUNT_Y) { segment.y = 0; }
-            if (segment.x < 0) { segment.x = CELL_COUNT_X - 1; }
-            if (segment.y < 0) { segment.y = CELL_COUNT_Y - 1; }
+            // wrapper
+            for (auto &segment : snake)
+            {
+                if (segment.x >= CELL_COUNT_X) { segment.x = 0; }
+                if (segment.y >= CELL_COUNT_Y) { segment.y = 0; }
+                if (segment.x < 0) { segment.x = CELL_COUNT_X - 1; }
+                if (segment.y < 0) { segment.y = CELL_COUNT_Y - 1; }
+            }
+
+            // collision
+            for(size_t i = 1; i < snake.size(); ++i)
+            {
+                if (
+                    snake[0].x == snake[i].x &&
+                    snake[0].y == snake[i].y
+                )
+                {
+                    // game over
+                }
+            }
         }
 
         // eat
