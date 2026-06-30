@@ -7,6 +7,8 @@ const int CELL_COUNT_Y = 9;
 const Color DARK_GRAY = {50, 50, 50, 255};
 const Color LIGHT_GRAY = {70, 70, 70, 255};
 
+Vector2 snake_pos = {5, 5};
+
 void drawCell(int pos_x, int pos_y, Color col)
 {
     DrawRectangle(pos_x * CELL_SIZE, pos_y * CELL_SIZE, CELL_SIZE, CELL_SIZE, col);
@@ -16,8 +18,7 @@ int main()
 {
     InitWindow(CELL_SIZE * CELL_COUNT_X, CELL_SIZE * CELL_COUNT_Y, "Game of snake");
     
-    Vector2 snake_pos = {5, 5};
-    Vector2 direction = {1, 0};
+    Vector2 snake_direction = {1, 0};
 
     const float move_time_duration_seconds = 0.2;
     float timer = move_time_duration_seconds;
@@ -50,8 +51,8 @@ int main()
         {
             timer += move_time_duration_seconds;
 
-            snake_pos.x += direction.x;
-            snake_pos.y += direction.y;
+            snake_pos.x += snake_direction.x;
+            snake_pos.y += snake_direction.y;
         }
 
         // wrapper
