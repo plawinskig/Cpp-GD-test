@@ -49,6 +49,7 @@ int main()
     SetTargetFPS(60);
 
     Vector2 snake_direction = {1, 0};
+    Vector2 snake_new_direction = {1, 0};
 
     const float move_time_duration_seconds = 0.2;
     float timer = move_time_duration_seconds;
@@ -88,10 +89,10 @@ int main()
         drawCell(fruit_pos.x, fruit_pos.y, RED);
 
         // input
-        if (IsKeyDown(KEY_W)) { snake_direction = {0, -1}; }
-        if (IsKeyDown(KEY_S)) { snake_direction = {0, 1}; }
-        if (IsKeyDown(KEY_A)) { snake_direction = {-1, 0}; }
-        if (IsKeyDown(KEY_D)) { snake_direction = {1, 0}; }
+        if (IsKeyDown(KEY_W)) { snake_new_direction = {0, -1}; }
+        if (IsKeyDown(KEY_S)) { snake_new_direction = {0, 1}; }
+        if (IsKeyDown(KEY_A)) { snake_new_direction = {-1, 0}; }
+        if (IsKeyDown(KEY_D)) { snake_new_direction = {1, 0}; }
 
         // move snake
         timer -= GetFrameTime();
@@ -104,6 +105,14 @@ int main()
             {
                 snake[i] = snake[i - 1];
             }
+
+            if(snake_new_direction.x == -snake_direction.x &&
+                snake_new_direction.y == -snake_direction.y)
+            {
+                snake_new_direction = snake_direction;
+            }
+
+            snake_direction = snake_new_direction;
 
             snake[0].x += snake_direction.x;
             snake[0].y += snake_direction.y;
