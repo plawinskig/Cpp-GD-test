@@ -40,6 +40,11 @@ bool Snake::isColliding()
     return false;
 }
 
+void Snake::extendBody()
+{
+    body_.push_back(body_[body_.size() - 1]);
+}
+
 void Snake::reset()
 {
     body_ = std::vector<Vector2>();

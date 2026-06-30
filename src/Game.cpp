@@ -135,6 +135,6 @@ void Game::eatFruit()
         snake_[0].y == fruit_pos_.y)
     {
         setFruit();
-        snake_.push_back(snake_[snake_.size() - 1]);
+        snake_.extendBody();
     }
 }

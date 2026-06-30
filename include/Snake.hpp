@@ -23,6 +23,7 @@ public:
 
     void move(Vector2 &new_direction);
     bool isColliding();
+    void extendBody();
     void reset();
 
 private:
