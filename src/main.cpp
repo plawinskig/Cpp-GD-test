@@ -54,6 +54,7 @@ int main()
     float timer = move_time_duration_seconds;
 
     snake.push_back({5,5});
+    snake.push_back({5,4});
 
     setFruit();
 
