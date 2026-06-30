@@ -13,11 +13,26 @@ public:
     const Color LIGHT_GRAY = {70, 70, 70, 255};
 
     void runGame();
+    
+private:
     void setFruit();
     void resetGame();
     void drawCell(int pos_x, int pos_y, Color col);
-
-private:
+    void drawBackground();
+    void drawSnake();
+    void drawFruit();
+    void getMoveInput();
+    void moveSnake();
+    void wrapSnake();
+    void detectSnakeCollision();
+    void eatFruit();
+    
     Vector2 fruit_pos_ = {0, 0};
     std::vector<Vector2> snake_;
+
+    Vector2 snake_direction = {1, 0};
+    Vector2 snake_new_direction = {1, 0};
+    
+    const float move_time_duration_seconds = 0.2;
+    float timer = move_time_duration_seconds;
 };
