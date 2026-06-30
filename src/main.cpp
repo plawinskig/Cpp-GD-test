@@ -8,6 +8,23 @@ const Color DARK_GRAY = {50, 50, 50, 255};
 const Color LIGHT_GRAY = {70, 70, 70, 255};
 
 Vector2 snake_pos = {5, 5};
+Vector2 fruit_pos = {0, 0};
+
+void setFruit()
+{
+    bool fruit_placed = false;
+    while (!fruit_placed)
+    {
+        fruit_pos.x = GetRandomValue(0, CELL_COUNT_X - 1);
+        fruit_pos.y = GetRandomValue(0, CELL_COUNT_Y - 1);
+
+        if (!(fruit_pos.x == snake_pos.x &&
+            fruit_pos.y == snake_pos.y))
+        {
+            fruit_placed = true;
+        }
+    }
+}
 
 void drawCell(int pos_x, int pos_y, Color col)
 {
@@ -22,6 +39,8 @@ int main()
 
     const float move_time_duration_seconds = 0.2;
     float timer = move_time_duration_seconds;
+
+    setFruit();
 
     SetTargetFPS(60);
 
@@ -45,6 +64,10 @@ int main()
         // snake
         drawCell(snake_pos.x, snake_pos.y, DARKGREEN);
 
+        // fruit
+        drawCell(fruit_pos.x, fruit_pos.y, RED);
+
+        // move snake
         timer -= GetFrameTime();
 
         if (timer <= 0)
