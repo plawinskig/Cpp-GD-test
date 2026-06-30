@@ -21,7 +21,7 @@ private:
     void drawBackground();
     void drawSnake();
     void drawFruit();
-    void getMoveInput();
+    Vector2 getSnakeDirectionFromInput();
     void wrapSnake();
     void eatFruit();
     
@@ -30,6 +30,4 @@ private:
 
     const float move_time_duration_seconds = 0.2;
     float timer = move_time_duration_seconds;
-
-    Vector2 snake_new_direction_;
 };
