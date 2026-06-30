@@ -14,13 +14,14 @@ int main()
     while (!WindowShouldClose()) 
     {
         BeginDrawing();
+        
         ClearBackground(RAYWHITE);
 
         DrawTexture(playerTex, 100, 100, WHITE);
         
         DrawTextureEx(playerTex, {400.0f, 100.0f}, 0.0f, 3.0f, WHITE);
 
-        DrawText("Grafika zaladowana pomyslnie!", 100, 500, 20, DARKGRAY);
+        DrawText("Player one", 100, 500, 20, DARKGRAY);
 
         EndDrawing();
     }
