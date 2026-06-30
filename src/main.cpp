@@ -16,6 +16,9 @@ int main()
 {
     InitWindow(CELL_SIZE * CELL_COUNT_X, CELL_SIZE * CELL_COUNT_Y, "Game of snake");
     
+    Vector2 snake_pos = {5, 5};
+    Vector2 direction = {1, 0};
+
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) 
@@ -35,9 +38,16 @@ int main()
             }
         }
         
+        // draw snake
+        drawCell(snake_pos.x, snake_pos.y, DARKGREEN);
+
+        // move snake
+        snake_pos.x += direction.x;
+        snake_pos.y += direction.y;
+
         EndDrawing();
     }
-    
+
     CloseWindow();
 
     return 0;
