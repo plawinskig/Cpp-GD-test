@@ -24,6 +24,22 @@ void Snake::move(Vector2 &new_direction)
     body_[0].y += direction_.y;
 }
 
+bool Snake::isColliding()
+{
+    for(size_t i = 1; i < body_.size(); ++i)
+    {
+        if (
+            body_[0].x == body_[i].x &&
+            body_[0].y == body_[i].y
+        )
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void Snake::reset()
 {
     body_ = std::vector<Vector2>();

@@ -22,9 +22,7 @@ private:
     void drawSnake();
     void drawFruit();
     void getMoveInput();
-    void moveSnake();
     void wrapSnake();
-    void detectSnakeCollision();
     void eatFruit();
     
     Vector2 fruit_pos_ = {0, 0};
