@@ -90,6 +90,12 @@ int main()
         // fruit
         drawCell(fruit_pos.x, fruit_pos.y, RED);
 
+        // input
+        if (IsKeyDown(KEY_W)) { snake_direction = {0, -1}; }
+        if (IsKeyDown(KEY_S)) { snake_direction = {0, 1}; }
+        if (IsKeyDown(KEY_A)) { snake_direction = {-1, 0}; }
+        if (IsKeyDown(KEY_D)) { snake_direction = {1, 0}; }
+
         // move snake
         timer -= GetFrameTime();
 
