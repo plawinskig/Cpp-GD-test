@@ -55,8 +55,9 @@ int main()
 
     setFruit();
 
-    Vector2 head_pos = {5, 5};
-    snake.push_back(head_pos);
+    snake.push_back(Vector2());
+    Vector2 &head_pos = snake[0];
+    head_pos = {5, 5};
 
     while (!WindowShouldClose()) 
     {
@@ -76,7 +77,13 @@ int main()
         }
         
         // snake
-        drawCell(snake_pos.x, snake_pos.y, DARKGREEN);
+        drawCell(head_pos.x, head_pos.y, DARKGREEN);
+
+        for (auto it = snake.begin() + 1; it != snake.end(); ++it)
+        {
+            Vector2 segment = *it;
+            drawCell(segment.x, segment.y, GREEN);
+        }
 
         // fruit
         drawCell(fruit_pos.x, fruit_pos.y, RED);
@@ -87,16 +94,24 @@ int main()
         if (timer <= 0)
         {
             timer += move_time_duration_seconds;
+            
+            for (int i = snake.size() - 1; i > 0; --i)
+            {
+                snake[i] = snake[i - 1];
+            }
 
-            snake_pos.x += snake_direction.x;
-            snake_pos.y += snake_direction.y;
+            head_pos.x += snake_direction.x;
+            head_pos.y += snake_direction.y;
         }
 
         // wrapper
-        if (snake_pos.x >= CELL_COUNT_X) { snake_pos.x = 0; }
-        if (snake_pos.y >= CELL_COUNT_Y) { snake_pos.y = 0; }
-        if (snake_pos.x < 0) { snake_pos.x = CELL_COUNT_X - 1; }
-        if (snake_pos.y < 0) { snake_pos.y = CELL_COUNT_Y - 1; }
+        for (auto &segment : snake)
+        {
+            if (segment.x >= CELL_COUNT_X) { segment.x = 0; }
+            if (segment.y >= CELL_COUNT_Y) { segment.y = 0; }
+            if (segment.x < 0) { segment.x = CELL_COUNT_X - 1; }
+            if (segment.y < 0) { segment.y = CELL_COUNT_Y - 1; }
+        }
 
         EndDrawing();
     }
