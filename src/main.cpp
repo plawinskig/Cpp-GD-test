@@ -43,6 +43,15 @@ void drawCell(int pos_x, int pos_y, Color col)
     DrawRectangle(pos_x * CELL_SIZE, pos_y * CELL_SIZE, CELL_SIZE, CELL_SIZE, col);
 }
 
+void resetGame()
+{
+    snake = std::vector<Vector2>();
+    snake.push_back({5,5});
+    snake.push_back({5,4});
+
+    setFruit();
+}
+
 int main() 
 {
     InitWindow(CELL_SIZE * CELL_COUNT_X, CELL_SIZE * CELL_COUNT_Y, "Game of snake");
@@ -54,10 +63,7 @@ int main()
     const float move_time_duration_seconds = 0.2;
     float timer = move_time_duration_seconds;
 
-    snake.push_back({5,5});
-    snake.push_back({5,4});
-
-    setFruit();
+    resetGame();
 
     while (!WindowShouldClose()) 
     {
@@ -134,7 +140,7 @@ int main()
                     snake[0].y == snake[i].y
                 )
                 {
-                    // game over
+                    resetGame();
                 }
             }
         }
