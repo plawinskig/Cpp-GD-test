@@ -1,6 +1,23 @@
 #pragma once
 
+#include "Snake.hpp"
+
 class Game
 {
+public:
+    const int CELL_SIZE = 100;
+    const int CELL_COUNT_X = 10;
+    const int CELL_COUNT_Y = 9;
 
+    const Color DARK_GRAY = {50, 50, 50, 255};
+    const Color LIGHT_GRAY = {70, 70, 70, 255};
+
+    void runGame();
+    void setFruit();
+    void resetGame();
+    void drawCell(int pos_x, int pos_y, Color col);
+
+private:
+    Vector2 fruit_pos_ = {0, 0};
+    std::vector<Vector2> snake_;
 };
