@@ -1,3 +1,4 @@
+#include <vector>
 #include "raylib.h"
 
 const int CELL_SIZE = 100;
@@ -7,7 +8,7 @@ const int CELL_COUNT_Y = 9;
 const Color DARK_GRAY = {50, 50, 50, 255};
 const Color LIGHT_GRAY = {70, 70, 70, 255};
 
-Vector2 snake_pos = {5, 5};
+std::vector<Vector2> snake;
 Vector2 fruit_pos = {0, 0};
 
 void setFruit()
@@ -18,8 +19,19 @@ void setFruit()
         fruit_pos.x = GetRandomValue(0, CELL_COUNT_X - 1);
         fruit_pos.y = GetRandomValue(0, CELL_COUNT_Y - 1);
 
-        if (!(fruit_pos.x == snake_pos.x &&
-            fruit_pos.y == snake_pos.y))
+        bool touches_snake = false;
+
+        for (auto it = snake.begin(); it != snake.end() && !touches_snake; ++it)
+        {
+            Vector2 segment_pos = *it;
+            if (segment_pos.x == fruit_pos.x &&
+                segment_pos.y == fruit_pos.y)
+            {
+                touches_snake = true;
+            }
+        }
+
+        if (!touches_snake)
         {
             fruit_placed = true;
         }
@@ -34,7 +46,8 @@ void drawCell(int pos_x, int pos_y, Color col)
 int main() 
 {
     InitWindow(CELL_SIZE * CELL_COUNT_X, CELL_SIZE * CELL_COUNT_Y, "Game of snake");
-    
+    SetTargetFPS(60);
+
     Vector2 snake_direction = {1, 0};
 
     const float move_time_duration_seconds = 0.2;
@@ -42,7 +55,8 @@ int main()
 
     setFruit();
 
-    SetTargetFPS(60);
+    Vector2 head_pos = {5, 5};
+    snake.push_back(head_pos);
 
     while (!WindowShouldClose()) 
     {
