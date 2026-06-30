@@ -2,7 +2,7 @@
 
 const int cell_size = 100;
 const int cell_count_x = 10;
-const int cell_count_y = 10;
+const int cell_count_y = 9;
 
 void drawCell(int pos_x, int pos_y, Color col)
 {
@@ -11,10 +11,7 @@ void drawCell(int pos_x, int pos_y, Color col)
 
 int main() 
 {
-    const int screen_width = 800;
-    const int screen_height = 600;
-
-    InitWindow(screen_width, screen_height, "Game of snake");
+    InitWindow(cell_size * cell_count_x, cell_size * cell_count_y, "Game of snake");
     
     SetTargetFPS(60);
 
