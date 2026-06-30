@@ -54,6 +54,12 @@ int main()
             snake_pos.y += direction.y;
         }
 
+        // wrapper
+        if (snake_pos.x >= CELL_COUNT_X) { snake_pos.x = 0; }
+        if (snake_pos.y >= CELL_COUNT_Y) { snake_pos.y = 0; }
+        if (snake_pos.x < 0) { snake_pos.x = CELL_COUNT_X - 1; }
+        if (snake_pos.y < 0) { snake_pos.y = CELL_COUNT_Y - 1; }
+
         EndDrawing();
     }
 
