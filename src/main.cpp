@@ -11,13 +11,13 @@ int main()
     while (!WindowShouldClose()) 
     { 
         BeginDrawing();
-        {
-            ClearBackground(RAYWHITE);
 
-            DrawText("The Raylib programmer", 150, 280, 20, DARKGRAY);
+        ClearBackground(RAYWHITE);
 
-            DrawCircle(400, 350, 30, RED);
-        }
+        DrawText("The Raylib programmer", 150, 280, 20, DARKGRAY);
+
+        DrawCircle(400, 350, 30, RED);
+        
         EndDrawing();
     }
 
