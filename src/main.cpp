@@ -19,6 +19,9 @@ int main()
     Vector2 snake_pos = {5, 5};
     Vector2 direction = {1, 0};
 
+    const float move_time_duration_seconds = 0.2;
+    float timer = move_time_duration_seconds;
+
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) 
@@ -38,12 +41,18 @@ int main()
             }
         }
         
-        // draw snake
+        // snake
         drawCell(snake_pos.x, snake_pos.y, DARKGREEN);
 
-        // move snake
-        snake_pos.x += direction.x;
-        snake_pos.y += direction.y;
+        timer -= GetFrameTime();
+
+        if (timer <= 0)
+        {
+            timer += move_time_duration_seconds;
+
+            snake_pos.x += direction.x;
+            snake_pos.y += direction.y;
+        }
 
         EndDrawing();
     }
