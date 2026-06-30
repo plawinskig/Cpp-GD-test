@@ -13,6 +13,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(SOURCES
     src/main.cpp
     src/Game.cpp
+    src/Snake.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

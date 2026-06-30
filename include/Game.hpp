@@ -28,11 +28,10 @@ private:
     void eatFruit();
     
     Vector2 fruit_pos_ = {0, 0};
-    std::vector<Vector2> snake_;
+    Snake snake_;
 
-    Vector2 snake_direction = {1, 0};
-    Vector2 snake_new_direction = {1, 0};
-    
     const float move_time_duration_seconds = 0.2;
     float timer = move_time_duration_seconds;
+
+    Vector2 snake_new_direction_;
 };

@@ -51,11 +51,10 @@ void Game::setFruit()
 
         bool touches_snake = false;
 
-        for (auto it = snake_.begin(); it != snake_.end() && !touches_snake; ++it)
+        for (size_t i = 0; i < snake_.getSize() && !touches_snake; ++i)
         {
-            Vector2 segment_pos = *it;
-            if (segment_pos.x == fruit_pos_.x &&
-                segment_pos.y == fruit_pos_.y)
+            if (snake_[i].x == fruit_pos_.x &&
+                snake_[i].y == fruit_pos_.y)
             {
                 touches_snake = true;
             }
@@ -70,10 +69,7 @@ void Game::setFruit()
 
 void Game::resetGame()
 {
-    snake_ = std::vector<Vector2>();
-    snake_.push_back({5,5});
-    snake_.push_back({5,4});
-
+    snake_.reset();
     setFruit();
 }
 
@@ -100,10 +96,9 @@ void Game::drawSnake()
 {
     drawCell(snake_[0].x, snake_[0].y, DARKGREEN);
 
-    for (auto it = snake_.begin() + 1; it != snake_.end(); ++it)
+    for (size_t i = 1; i < snake_.getSize(); ++i)
     {
-        Vector2 segment = *it;
-        drawCell(segment.x, segment.y, GREEN);
+        drawCell(snake_[i].x, snake_[i].y, GREEN);
     }
 }
 
@@ -114,29 +109,10 @@ void Game::drawFruit()
 
 void Game::getMoveInput()
 {
-    if (IsKeyDown(KEY_W)) { snake_new_direction = {0, -1}; }
-    if (IsKeyDown(KEY_S)) { snake_new_direction = {0, 1}; }
-    if (IsKeyDown(KEY_A)) { snake_new_direction = {-1, 0}; }
-    if (IsKeyDown(KEY_D)) { snake_new_direction = {1, 0}; }
-}
-
-void Game::moveSnake()
-{
-    for (int i = snake_.size() - 1; i > 0; --i)
-    {
-        snake_[i] = snake_[i - 1];
-    }
-
-    if(snake_new_direction.x == -snake_direction.x &&
-        snake_new_direction.y == -snake_direction.y)
-    {
-        snake_new_direction = snake_direction;
-    }
-
-    snake_direction = snake_new_direction;
-
-    snake_[0].x += snake_direction.x;
-    snake_[0].y += snake_direction.y;
+    if (IsKeyDown(KEY_W)) { snake_new_direction_ = {0, -1}; }
+    if (IsKeyDown(KEY_S)) { snake_new_direction_ = {0, 1}; }
+    if (IsKeyDown(KEY_A)) { snake_new_direction_ = {-1, 0}; }
+    if (IsKeyDown(KEY_D)) { snake_new_direction_ = {1, 0}; }
 }
 
 void Game::wrapSnake()
