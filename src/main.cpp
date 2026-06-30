@@ -121,6 +121,14 @@ int main()
             if (segment.y < 0) { segment.y = CELL_COUNT_Y - 1; }
         }
 
+        // eat
+        if (snake[0].x == fruit_pos.x &&
+            snake[0].y == fruit_pos.y)
+        {
+            setFruit();
+            snake.push_back(snake[snake.size() - 1]);
+        }
+
         EndDrawing();
     }
 
