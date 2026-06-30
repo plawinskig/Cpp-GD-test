@@ -21,3 +21,15 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     $<TARGET_FILE_DIR:${PROJECT_NAME}>/assets
     COMMENT "Copying the assets folder to the build directory"
 )
+
+include(FetchContent)
+
+set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+    raylib
+    URL https://github.com/raysan5/raylib/archive/refs/tags/5.0.tar.gz
+)
+FetchContent_MakeAvailable(raylib)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
