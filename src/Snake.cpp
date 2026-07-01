@@ -62,8 +62,7 @@ bool Snake::occupies(const Vector2 &pos) const
 
 void Snake::extendBody()
 {
-    Vector2 new_head_pos = {getHeadPos().x + direction_.x, getHeadPos().y + direction_.y};
-    body_.push_front(new_head_pos);
+    body_.push_back(body_.back());
 }
 
 void Snake::reset()

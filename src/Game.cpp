@@ -34,6 +34,7 @@ void Game::update()
 
         if(snake_.isColliding())
         {
+            WaitTime(1);
             resetGame();
         }
     }
