@@ -27,9 +27,9 @@ private:
     void wrapSnake();
     void eatFruit();
     
-    Vector2 fruit_pos_ = {0, 0};
-    Vector2 snake_new_direction_ = {1, 0};
+    Vector2 fruit_pos_;
+    Vector2 snake_new_direction_;
     Snake snake_;
 
-    float timer_ = MOVE_TIME_DURATION_SECONDS;
+    float timer_;
 };

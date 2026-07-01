@@ -75,6 +75,7 @@ void Game::resetGame()
     snake_.reset();
     snake_new_direction_ = {1, 0};
     setFruit();
+    timer_ = MOVE_TIME_DURATION_SECONDS;
 }
 
 void Game::drawCell(int pos_x, int pos_y, Color col)
