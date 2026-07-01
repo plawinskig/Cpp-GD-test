@@ -18,7 +18,7 @@ void Game::runGame()
 
         drawFruit();
 
-        Vector2 snake_new_direction = getSnakeDirectionFromInput();
+        getSnakeDirectionFromInput();
 
         timer -= GetFrameTime();
 
@@ -26,7 +26,7 @@ void Game::runGame()
         {
             timer += move_time_duration_seconds;
             
-            snake_.move(snake_new_direction);
+            snake_.move(snake_new_direction_);
 
             wrapSnake();
 
@@ -110,14 +110,12 @@ void Game::drawFruit()
     drawCell(fruit_pos_.x, fruit_pos_.y, RED);
 }
 
-Vector2 Game::getSnakeDirectionFromInput()
+void Game::getSnakeDirectionFromInput()
 {
-    Vector2 new_direction = snake_.getDirection();
-    if (IsKeyDown(KEY_W)) { new_direction = {0, -1}; }
-    if (IsKeyDown(KEY_S)) { new_direction = {0, 1}; }
-    if (IsKeyDown(KEY_A)) { new_direction = {-1, 0}; }
-    if (IsKeyDown(KEY_D)) { new_direction = {1, 0}; }
-    return new_direction;
+    if (IsKeyDown(KEY_W)) { snake_new_direction_ = {0, -1}; }
+    if (IsKeyDown(KEY_S)) { snake_new_direction_ = {0, 1}; }
+    if (IsKeyDown(KEY_A)) { snake_new_direction_ = {-1, 0}; }
+    if (IsKeyDown(KEY_D)) { snake_new_direction_ = {1, 0}; }
 }
 
 void Game::wrapSnake()

@@ -21,11 +21,12 @@ private:
     void drawBackground();
     void drawSnake();
     void drawFruit();
-    Vector2 getSnakeDirectionFromInput();
+    void getSnakeDirectionFromInput();
     void wrapSnake();
     void eatFruit();
     
     Vector2 fruit_pos_ = {0, 0};
+    Vector2 snake_new_direction_ = {1, 0};
     Snake snake_;
 
     const float move_time_duration_seconds = 0.2;
