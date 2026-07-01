@@ -24,7 +24,6 @@ private:
     void drawSnake();
     void drawFruit();
     void getSnakeDirectionFromInput();
-    void wrapSnake();
     void eatFruit();
     
     Vector2 fruit_pos_;

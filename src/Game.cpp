@@ -28,7 +28,7 @@ void Game::runGame()
             
             snake_.move(snake_new_direction_);
 
-            wrapSnake();
+            snake_.wrap(CELL_COUNT_X, CELL_COUNT_Y);
 
             if(snake_.isColliding())
             {
@@ -118,17 +118,6 @@ void Game::getSnakeDirectionFromInput()
     if (IsKeyDown(KEY_S)) { snake_new_direction_ = {0, 1}; }
     if (IsKeyDown(KEY_A)) { snake_new_direction_ = {-1, 0}; }
     if (IsKeyDown(KEY_D)) { snake_new_direction_ = {1, 0}; }
-}
-
-void Game::wrapSnake()
-{
-    for (auto &segment : snake_)
-    {
-        if (segment.x >= CELL_COUNT_X) { segment.x = 0; }
-        if (segment.y >= CELL_COUNT_Y) { segment.y = 0; }
-        if (segment.x < 0) { segment.x = CELL_COUNT_X - 1; }
-        if (segment.y < 0) { segment.y = CELL_COUNT_Y - 1; }
-    }
 }
 
 void Game::eatFruit()

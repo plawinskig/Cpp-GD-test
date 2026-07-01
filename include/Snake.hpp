@@ -22,6 +22,7 @@ public:
     void setDirection(Vector2 &direction) { direction_ = direction; }
 
     void move(Vector2 &new_direction);
+    void wrap(int max_x, int max_y);
     bool isColliding();
     void extendBody();
     void reset();
