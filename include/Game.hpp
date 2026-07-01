@@ -27,8 +27,8 @@ private:
     void getSnakeDirectionFromInput();
     void eatFruit();
     
-    Vector2 fruit_pos_;
-    Vector2 snake_new_direction_;
+    Vector2 fruit_pos_ = {0, 0};
+    Vector2 snake_new_direction_ = {1, 0};
     Snake snake_;
 
     float timer_;
