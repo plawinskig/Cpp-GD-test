@@ -33,7 +33,7 @@ void Snake::wrap(int max_x, int max_y)
     }
 }
 
-bool Snake::isColliding()
+bool Snake::isColliding() const
 {
     for(size_t i = 1; i < body_.size(); ++i)
     {

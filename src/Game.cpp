@@ -86,7 +86,7 @@ void Game::drawBackground()
     }
 }
 
-void Game::drawSnake()
+void Game::drawSnake() const
 {
     drawCell(snake_.getHeadPos().x, snake_.getHeadPos().y, DARKGREEN);
 
@@ -96,7 +96,7 @@ void Game::drawSnake()
     }
 }
 
-void Game::drawFruit()
+void Game::drawFruit() const
 {
     drawCell(fruit_pos_.x, fruit_pos_.y, RED);
 }

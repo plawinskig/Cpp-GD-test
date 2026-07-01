@@ -17,12 +17,13 @@ public:
     void runGame();
     
 private:
+    static void drawCell(int pos_x, int pos_y, Color col);
+    static void drawBackground();
+
     void setFruit();
     void resetGame();
-    void drawCell(int pos_x, int pos_y, Color col);
-    void drawBackground();
-    void drawSnake();
-    void drawFruit();
+    void drawSnake() const;
+    void drawFruit() const;
     void getSnakeDirectionFromInput();
     void eatFruit();
     
