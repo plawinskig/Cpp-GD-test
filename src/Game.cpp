@@ -9,39 +9,49 @@ void Game::runGame()
 
     while (!WindowShouldClose()) 
     {
-        BeginDrawing();
-        ClearBackground(DARK_GRAY);
-
-        drawBackground();
-        
-        drawSnake();
-
-        drawFruit();
-
-        getSnakeDirectionFromInput();
-
-        timer_ -= GetFrameTime();
-
-        if (timer_ <= 0)
-        {
-            timer_ += MOVE_TIME_DURATION_SECONDS;
-            
-            snake_.move(snake_new_direction_);
-
-            snake_.wrap(CELL_COUNT_X, CELL_COUNT_Y);
-
-            if(snake_.isColliding())
-            {
-                resetGame();
-            }
-        }
-
-        eatFruit();
-
-        EndDrawing();
+        update();
+        draw();
     }
 
     CloseWindow();
+}
+
+void Game::update()
+{
+    getSnakeDirectionFromInput();
+
+    timer_ -= GetFrameTime();
+
+    if (timer_ <= 0)
+    {
+        timer_ += MOVE_TIME_DURATION_SECONDS;
+        
+        snake_.move(snake_new_direction_);
+
+        snake_.wrap(CELL_COUNT_X, CELL_COUNT_Y);
+
+        if(snake_.isColliding())
+        {
+            resetGame();
+        }
+    }
+
+    eatFruit();
+}
+
+void Game::draw()
+{
+    BeginDrawing();
+
+    ClearBackground(DARK_GRAY);
+
+    drawBackground();
+    
+    drawSnake();
+
+    drawFruit();
+
+    EndDrawing();
 }
 
 void Game::setFruit()

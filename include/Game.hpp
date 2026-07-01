@@ -25,8 +25,8 @@ public:
     void runGame();
     
 private:
-    static void drawCell(int pos_x, int pos_y, Color col);
-    static void drawBackground();
+    void update();
+    void draw();
 
     void setFruit();
     void resetGame();
@@ -34,6 +34,9 @@ private:
     void drawFruit() const;
     void getSnakeDirectionFromInput();
     void eatFruit();
+
+    static void drawCell(int pos_x, int pos_y, Color col);
+    static void drawBackground();
     
     Vector2 fruit_pos_;
     Vector2 snake_new_direction_;
