@@ -7,5 +7,8 @@
         "value": "C:\\msys64\\ucrt64\\bin"
       }
     ]
-  }
+  },
+  "cmake.configureArgs": [
+    "-Wno-deprecated"
+  ]
 }
