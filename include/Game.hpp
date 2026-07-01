@@ -26,7 +26,7 @@ public:
     
 private:
     void update();
-    void draw();
+    void draw() const;
 
     void setFruit();
     void resetGame();

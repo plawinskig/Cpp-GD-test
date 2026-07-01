@@ -39,7 +39,7 @@ void Game::update()
     eatFruit();
 }
 
-void Game::draw()
+void Game::draw() const
 {
     BeginDrawing();
 
