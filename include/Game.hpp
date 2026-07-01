@@ -5,14 +5,14 @@
 class Game
 {
 public:
-    const int CELL_SIZE = 100;
-    const int CELL_COUNT_X = 10;
-    const int CELL_COUNT_Y = 9;
+    static constexpr int CELL_SIZE = 100;
+    static constexpr int CELL_COUNT_X = 10;
+    static constexpr int CELL_COUNT_Y = 9;
 
-    const Color DARK_GRAY = {50, 50, 50, 255};
-    const Color LIGHT_GRAY = {70, 70, 70, 255};
+    static constexpr Color DARK_GRAY = {50, 50, 50, 255};
+    static constexpr Color LIGHT_GRAY = {70, 70, 70, 255};
 
-    const float MOVE_TIME_DURATION_SECONDS = 0.2f;
+    static constexpr float MOVE_TIME_DURATION_SECONDS = 0.2f;
 
     void runGame();
     
