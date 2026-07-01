@@ -19,9 +19,9 @@ public:
     size_t getSize() { return body_.size(); }
     Vector2 getDirection() { return direction_; }
 
-    void setDirection(Vector2 &direction) { direction_ = direction; }
+    void setDirection(const Vector2 &direction) { direction_ = direction; }
 
-    void move(Vector2 &new_direction);
+    void move(const Vector2 &new_direction);
     void wrap(int max_x, int max_y);
     bool isColliding();
     void extendBody();

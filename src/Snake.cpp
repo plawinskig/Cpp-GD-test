@@ -5,20 +5,18 @@ Snake::Snake()
     reset();
 }
 
-void Snake::move(Vector2 &new_direction)
+void Snake::move(const Vector2 &new_direction)
 {
     for (int i = body_.size() - 1; i > 0; --i)
     {
         body_[i] = body_[i - 1];
     }
 
-    if(new_direction.x == -direction_.x &&
-        new_direction.y == -direction_.y)
+    if(!(new_direction.x == -direction_.x &&
+        new_direction.y == -direction_.y))
     {
-        new_direction = direction_;
+        setDirection(new_direction);
     }
-
-    setDirection(new_direction);
 
     body_[0].x += direction_.x;
     body_[0].y += direction_.y;
