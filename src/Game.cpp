@@ -114,10 +114,10 @@ void Game::drawFruit()
 
 void Game::getSnakeDirectionFromInput()
 {
-    if (IsKeyDown(KEY_W)) { snake_new_direction_ = {0, -1}; }
-    if (IsKeyDown(KEY_S)) { snake_new_direction_ = {0, 1}; }
-    if (IsKeyDown(KEY_A)) { snake_new_direction_ = {-1, 0}; }
-    if (IsKeyDown(KEY_D)) { snake_new_direction_ = {1, 0}; }
+    if (IsKeyPressed(KEY_W)) { snake_new_direction_ = {0, -1}; }
+    if (IsKeyPressed(KEY_S)) { snake_new_direction_ = {0, 1}; }
+    if (IsKeyPressed(KEY_A)) { snake_new_direction_ = {-1, 0}; }
+    if (IsKeyPressed(KEY_D)) { snake_new_direction_ = {1, 0}; }
 }
 
 void Game::eatFruit()
