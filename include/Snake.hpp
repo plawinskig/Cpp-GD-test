@@ -8,7 +8,7 @@ class Snake
 public:
     Snake();
 
-    Vector2 operator[](int i) const { return body_[i]; }
+    const Vector2& operator[](size_t i) const { return body_[i]; }
 
     auto begin() { return body_.begin(); }
     auto end()   { return body_.end(); }
