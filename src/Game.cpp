@@ -29,14 +29,14 @@ void Game::update()
         snake_.move(snake_new_direction_);
 
         snake_.wrap(CELL_COUNT_X, CELL_COUNT_Y);
+    
+        eatFruit();
 
         if(snake_.isColliding())
         {
             resetGame();
         }
     }
-
-    eatFruit();
 }
 
 void Game::draw() const
