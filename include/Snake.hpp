@@ -24,6 +24,7 @@ public:
     void move(const Vector2 &new_direction);
     void wrap(int max_x, int max_y);
     bool isColliding();
+    bool occupies(const Vector2 &pos) const;
     void extendBody();
     void reset();
 

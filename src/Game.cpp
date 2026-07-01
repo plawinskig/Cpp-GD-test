@@ -52,18 +52,7 @@ void Game::setFruit()
         fruit_pos_.x = GetRandomValue(0, CELL_COUNT_X - 1);
         fruit_pos_.y = GetRandomValue(0, CELL_COUNT_Y - 1);
 
-        bool touches_snake = false;
-
-        for (size_t i = 0; i < snake_.getSize() && !touches_snake; ++i)
-        {
-            if (snake_[i].x == fruit_pos_.x &&
-                snake_[i].y == fruit_pos_.y)
-            {
-                touches_snake = true;
-            }
-        }
-
-        if (!touches_snake)
+        if (!snake_.occupies(fruit_pos_)) 
         {
             fruit_placed = true;
         }

@@ -49,6 +49,19 @@ bool Snake::isColliding()
     return false;
 }
 
+bool Snake::occupies(const Vector2 &pos) const
+{
+    for (Vector2 const& segment : body_)
+    {
+        if (segment.x == pos.x && segment.y == pos.y)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void Snake::extendBody()
 {
     body_.push_back(body_[body_.size() - 1]);
