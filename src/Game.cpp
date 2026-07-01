@@ -73,6 +73,7 @@ void Game::setFruit()
 void Game::resetGame()
 {
     snake_.reset();
+    snake_new_direction_ = {1, 0};
     setFruit();
 }
 
