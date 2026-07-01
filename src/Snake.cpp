@@ -1,7 +1,7 @@
 #include "Snake.hpp"
 
 Snake::Snake()
-    : body_(std::vector<Vector2>()),
+    : body_(std::deque<Vector2>()),
     direction_({1, 0})
 {
     reset();
@@ -9,19 +9,15 @@ Snake::Snake()
 
 void Snake::move(const Vector2 &new_direction)
 {
-    for (int i = body_.size() - 1; i > 0; --i)
-    {
-        body_[i] = body_[i - 1];
-    }
-
     if(!(new_direction.x == -direction_.x &&
         new_direction.y == -direction_.y))
     {
         setDirection(new_direction);
     }
 
-    body_[0].x += direction_.x;
-    body_[0].y += direction_.y;
+    Vector2 new_head_pos = {getHeadPos().x + direction_.x, getHeadPos().y + direction_.y};
+    body_.push_front(new_head_pos);
+    body_.pop_back();
 }
 
 void Snake::wrap(int max_x, int max_y)
@@ -66,7 +62,8 @@ bool Snake::occupies(const Vector2 &pos) const
 
 void Snake::extendBody()
 {
-    body_.push_back(body_[body_.size() - 1]);
+    Vector2 new_head_pos = {getHeadPos().x + direction_.x, getHeadPos().y + direction_.y};
+    body_.push_front(new_head_pos);
 }
 
 void Snake::reset()

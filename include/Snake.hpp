@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <deque>
 #include "raylib.h"
 
 class Snake
@@ -31,6 +31,6 @@ public:
     void reset();
 
 private:
-    std::vector<Vector2> body_;
+    std::deque<Vector2> body_;
     Vector2 direction_;
 };
