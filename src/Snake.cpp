@@ -69,7 +69,7 @@ void Snake::extendBody()
 
 void Snake::reset()
 {
-    body_ = std::vector<Vector2>();
+    body_.clear();
     direction_ = {1, 0};
 
     body_.push_back({5,5});
