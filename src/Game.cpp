@@ -20,11 +20,11 @@ void Game::runGame()
 
         getSnakeDirectionFromInput();
 
-        timer -= GetFrameTime();
+        timer_ -= GetFrameTime();
 
-        if (timer <= 0)
+        if (timer_ <= 0)
         {
-            timer += move_time_duration_seconds;
+            timer_ += MOVE_TIME_DURATION_SECONDS;
             
             snake_.move(snake_new_direction_);
 

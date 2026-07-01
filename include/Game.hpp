@@ -12,6 +12,8 @@ public:
     const Color DARK_GRAY = {50, 50, 50, 255};
     const Color LIGHT_GRAY = {70, 70, 70, 255};
 
+    const float MOVE_TIME_DURATION_SECONDS = 0.2f;
+
     void runGame();
     
 private:
@@ -29,6 +31,5 @@ private:
     Vector2 snake_new_direction_ = {1, 0};
     Snake snake_;
 
-    const float move_time_duration_seconds = 0.2;
-    float timer = move_time_duration_seconds;
+    float timer_ = MOVE_TIME_DURATION_SECONDS;
 };
