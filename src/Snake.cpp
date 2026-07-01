@@ -1,6 +1,8 @@
 #include "Snake.hpp"
 
 Snake::Snake()
+    : body_(std::vector<Vector2>()),
+    direction_({1, 0})
 {
     reset();
 }
