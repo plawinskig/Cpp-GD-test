@@ -88,7 +88,7 @@ void Game::drawBackground()
 
 void Game::drawSnake()
 {
-    drawCell(snake_[0].x, snake_[0].y, DARKGREEN);
+    drawCell(snake_.getHeadPos().x, snake_.getHeadPos().y, DARKGREEN);
 
     for (size_t i = 1; i < snake_.getSize(); ++i)
     {
@@ -111,8 +111,8 @@ void Game::getSnakeDirectionFromInput()
 
 void Game::eatFruit()
 {
-    if (snake_[0].x == fruit_pos_.x &&
-        snake_[0].y == fruit_pos_.y)
+    if (snake_.getHeadPos().x == fruit_pos_.x &&
+        snake_.getHeadPos().y == fruit_pos_.y)
     {
         setFruit();
         snake_.extendBody();

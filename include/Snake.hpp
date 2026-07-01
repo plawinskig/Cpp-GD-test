@@ -18,6 +18,7 @@ public:
 
     size_t getSize() { return body_.size(); }
     Vector2 getDirection() { return direction_; }
+    Vector2 getHeadPos() const { return body_[0]; }
 
     void setDirection(const Vector2 &direction) { direction_ = direction; }
 
